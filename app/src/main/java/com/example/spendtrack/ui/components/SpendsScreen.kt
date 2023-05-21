@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Save
@@ -13,14 +14,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.spendtrack.ui.SpendsViewModel
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun SpendsScreen(
-    navController: NavController
+    navController: NavController,
+    viewModel: SpendsViewModel = hiltViewModel()
 ) {
     val scaffoldState = rememberScaffoldState()
+    val spendsState = viewModel.state.value
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
@@ -54,6 +59,15 @@ fun SpendsScreen(
                     .fillMaxWidth()
                     .weight(6f)
             ) {
+                LazyColumn(
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    items(spendsState) { spend ->
+                        SpendItem(spend)
+                        Divider()
+
+                    }
+                }
                 /**LazyColumn(
                 modifier = Modifier.fillMaxSize()
                 ) {
