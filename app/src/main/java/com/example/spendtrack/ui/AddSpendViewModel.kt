@@ -4,7 +4,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.spendtrack.AddSpendEvent
+import com.example.spendtrack.utils.AddSpendEvent
 import com.example.spendtrack.Validator
 import com.example.spendtrack.data.InvalidSpendException
 import com.example.spendtrack.data.Spend
@@ -42,6 +42,7 @@ class AddSpendViewModel @Inject constructor(
 
         repository.addSpend(Spend(Date(), amount.toInt(), description))
     }
+
 
     fun onEvent(event: AddSpendEvent) {
         when(event) {

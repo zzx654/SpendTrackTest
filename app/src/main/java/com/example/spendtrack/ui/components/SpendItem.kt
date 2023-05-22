@@ -1,34 +1,54 @@
 package com.example.spendtrack
 
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
+import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.example.spendtrack.data.Spend
+import java.text.SimpleDateFormat
+import java.util.*
 
 @Composable
 fun SpendItem(
     spend: Spend
 ) {
-    Row(
-        modifier = Modifier.fillMaxWidth()
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
     ) {
-        Text(
-            modifier = Modifier.weight(3f),
-            text = spend.date.toString()
-        )
-        Text(
-            modifier = Modifier.weight(5f),
-            text = spend.description
-        )
-        Text(
-            modifier = Modifier.weight(1f),
-            text = spend.amount.toString()
-        )
+        Spacer(modifier = Modifier.height(10.dp))
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 10.dp)
+        ) {
+            Text(
+                modifier = Modifier.weight(3f),
+                text = getDateStr(spend.date)
+            )
+            Text(
+                modifier = Modifier.weight(5f),
+                text = spend.description
+            )
+            Text(
+                modifier = Modifier.weight(1f),
+                text = spend.amount.toString()
+            )
 
 
 
+        }
+        Spacer(
+            modifier = Modifier.height(10.dp)
+        )
     }
 
+
+}
+@SuppressLint("SimpleDateFormat")
+private fun getDateStr(date: Date): String {
+    val simpleDateFormat = SimpleDateFormat("yyyy-mm-dd")
+    return simpleDateFormat.format(date)
 }

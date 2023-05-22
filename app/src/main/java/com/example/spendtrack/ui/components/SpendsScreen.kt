@@ -1,22 +1,21 @@
 package com.example.spendtrack
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Save
+import androidx.compose.material.icons.filled.PriceCheck
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.spendtrack.ui.SpendsViewModel
+import com.example.spendtrack.utils.Screen
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -34,7 +33,7 @@ fun SpendsScreen(
                 },
                 backgroundColor = MaterialTheme.colors.primary
             ) {
-                Icon(imageVector = Icons.Default.Save, contentDescription = "Save")
+                Icon(imageVector = Icons.Default.PriceCheck, contentDescription = "Save")
             }
         },
         scaffoldState = scaffoldState
@@ -64,17 +63,11 @@ fun SpendsScreen(
                 ) {
                     items(spendsState) { spend ->
                         SpendItem(spend)
-                        Divider()
+                        Divider(modifier = Modifier.padding(10.dp))
 
                     }
                 }
-                /**LazyColumn(
-                modifier = Modifier.fillMaxSize()
-                ) {
-                items() {
 
-                }
-                }**/
 
             }
 

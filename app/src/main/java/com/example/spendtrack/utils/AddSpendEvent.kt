@@ -1,4 +1,4 @@
-package com.example.spendtrack
+package com.example.spendtrack.utils
 
 sealed class AddSpendEvent {
     data class EnteredAmount(val value: String): AddSpendEvent()

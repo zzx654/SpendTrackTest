@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.spendtrack.ui.AddSpendViewModel
-import com.example.spendtrack.ui.SpendViewModel
+import com.example.spendtrack.utils.AddSpendEvent
 import kotlinx.coroutines.flow.collectLatest
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -31,11 +31,14 @@ fun AddSpendScreen(
         viewModel.eventFlow.collectLatest { event ->
             when(event) {
                 is AddSpendViewModel.UiEvent.ShowSnackbar -> {
-
+                    scaffoldState.snackbarHostState.showSnackbar(
+                        message = event.message
+                    )
                 }
                 is AddSpendViewModel.UiEvent.SaveSpend -> {
                     navController.navigateUp()
                 }
+                else -> null
             }
         }
     }
