@@ -49,6 +49,6 @@ fun SpendItem(
 }
 @SuppressLint("SimpleDateFormat")
 private fun getDateStr(date: Date): String {
-    val simpleDateFormat = SimpleDateFormat("yyyy-mm-dd")
+    val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
     return simpleDateFormat.format(date)
 }
