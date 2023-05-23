@@ -33,7 +33,7 @@ fun SpendsScreen(
                 },
                 backgroundColor = MaterialTheme.colors.primary
             ) {
-                Icon(imageVector = Icons.Default.PriceCheck, contentDescription = "Save")
+                Icon(imageVector = Icons.Default.PriceCheck, contentDescription = "Add")
             }
         },
         scaffoldState = scaffoldState

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.example.spendtrack.data.Spend
 import java.text.SimpleDateFormat
@@ -17,6 +18,7 @@ fun SpendItem(
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .testTag("SpendItem")
     ) {
         Spacer(modifier = Modifier.height(10.dp))
         Row(

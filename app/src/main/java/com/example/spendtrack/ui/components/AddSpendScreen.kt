@@ -9,6 +9,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -75,6 +76,7 @@ fun AddSpendScreen(
                 OutlinedTextField(
                     value = amountState.value ,
                     modifier = Modifier
+                        .testTag("amount_textfield")
                         .align(Alignment.Center)
                         .fillMaxWidth(),
                     label = { Text(text = "Amount") },
@@ -94,6 +96,7 @@ fun AddSpendScreen(
                 OutlinedTextField(
                     value = descriptionState.value ,
                     modifier = Modifier
+                        .testTag("description_textfield")
                         .align(Alignment.Center)
                         .fillMaxSize(),
                     label = { Text(text = "Description") },
@@ -110,6 +113,7 @@ fun AddSpendScreen(
                 Button(
                     onClick = { viewModel.onEvent(AddSpendEvent.SaveSpend) },
                     modifier = Modifier
+                        .testTag("Save")
                         .align(Alignment.Center)
                         .fillMaxWidth()
                 ) {
