@@ -76,15 +76,30 @@ class SpendsEndToEndTest {
 
         composeRule.onNodeWithTag("Save").performClick()
 
+
         composeRule.onAllNodesWithTag("SpendItem")[0].onChildAt(1)
             .assertTextContains("계란")
 
         composeRule.onAllNodesWithTag("SpendItem")[0].onChildAt(2)
             .assertTextContains("100")
-          //  .assertTextContains("계란")
-        //composeRule.onNodeWithText("계란").assertIsDisplayed()
 
-        //composeRule.onNodeWithText("100").assertIsDisplayed()
+    }
+
+    @Test
+    fun saveWrongSpend() {
+        composeRule.onNodeWithContentDescription("Add").performClick()
+
+        composeRule
+            .onNodeWithTag("amount_textfield")
+            .performTextInput("")
+        composeRule
+            .onNodeWithTag("description_textfield")
+            .performTextInput("계란")
+
+        composeRule.onNodeWithTag("Save").performClick()
+
+        composeRule.onNodeWithText("100").assertDoesNotExist()
+
 
     }
 }
